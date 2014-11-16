@@ -18,4 +18,5 @@ ndk-build clean && ndk-build -j9 && ant debug
 
 
 scp $THIS_DIR/bin/$APK 'mac:~/tmp'
+ssh mac "adb root"
 ssh mac 'cd $HOME/tmp && adb push org.libsdl.testgles-debug.apk /data/app'
