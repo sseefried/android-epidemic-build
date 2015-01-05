@@ -1,4 +1,4 @@
-/home/androidbuilder/build/org.sseefried.epidemic/gen/org/libsdl/testgles/R.java \
+/home/androidbuilder/build/org.sseefried.epidemic/gen/org/sseefried/epidemic/R.java \
  : /home/androidbuilder/build/org.sseefried.epidemic/res/drawable-mdpi/ic_launcher.png \
 /home/androidbuilder/build/org.sseefried.epidemic/res/layout/main.xml \
 /home/androidbuilder/build/org.sseefried.epidemic/res/drawable-xhdpi/ic_launcher.png \

@@ -21,6 +21,13 @@ LOCAL_MODULE := SDL2_mixer
 LOCAL_SRC_FILES := $(TARGET_ARCH_ABI)/libSDL2_mixer.so
 include $(PREBUILT_SHARED_LIBRARY)
 
+# GLESv2
+
+#include $(CLEAR_VARS)
+#LOCAL_MODULE := GLESv2
+#LOCAL_SRC_FILES := $(TARGET_ARCH_ABI)/libGLESv2.so
+#include $(PREBUILT_SHARED_LIBRARY)
+
 # libz
 
 include $(CLEAR_VARS)
@@ -49,9 +56,11 @@ LOCAL_SHARED_LIBRARIES := SDL2 SDL2_mixer z
 # to do!
 #
 
+LOCAL_LDFLAGS += -Wl,--export-dynamic
+
 LOCAL_LDLIBS := -L$(LOCAL_PATH)/$(TARGET_ARCH_ABI) \
  -Wl,--start-group \
- -lGLESv1_CM -lGLESv2 -lz -llog \
+ -lz -llog \
  -lHSEpidemic-0.0.1 \
  -lHSrts \
  -lCffi \
@@ -78,6 +87,8 @@ LOCAL_LDLIBS := -L$(LOCAL_PATH)/$(TARGET_ARCH_ABI) \
  -lHSbase-4.7.0.0 \
  -lHSinteger-gmp-0.5.1.0 \
  -lHSghc-prim-0.3.1.0 \
+ -lHSOpenGLRaw-1.5.0.0 \
+ -lGLESv2 \
  -liconv \
  -lcairo \
  -lpixman \
