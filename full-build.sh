@@ -1,7 +1,7 @@
 #!/bin/bash
 source $HOME/.ndkrc
 
-APK=org.sseefried.epidemic-debug.apk
+APK=com.declarative.games.epidemic-debug.apk
 THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cd ~/ghc-build/epidemic-game
