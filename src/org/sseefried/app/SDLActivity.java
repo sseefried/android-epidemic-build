@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.io.*;
+import java.io.IOException;
 
 import android.app.*;
 import android.content.*;
@@ -19,6 +21,7 @@ import android.util.Log;
 import android.graphics.*;
 import android.media.*;
 import android.hardware.*;
+import android.content.res.AssetManager;
 
 
 /**
@@ -43,6 +46,9 @@ public class SDLActivity extends Activity {
     
     // Audio
     protected static AudioTrack mAudioTrack;
+
+    // Where we unpack the assets for the game
+    public static String externalAssetsDir;
 
     // Load the .so
     static {
@@ -70,6 +76,46 @@ public class SDLActivity extends Activity {
         mIsPaused = false;
         mIsSurfaceReady = false;
         mHasFocus = true;
+	externalAssetsDir = null;
+    }
+
+
+    public static void unpackAssets() {
+	int i;
+	Context cxt = getContext();
+        AssetManager am = cxt.getAssets();
+	String[] assets;
+        externalAssetsDir = cxt.getExternalFilesDir(null).toString();
+           //new File(Environment.getExternalStorageDirectory().getAbsolutePath());
+           
+	try {
+           assets = am.list("");
+	   
+           Log.v("SDL", "Set external files dir to: " + externalAssetsDir);
+           for (i = 0; i < assets.length; i++) {
+             File file;
+	     // AssetManager also returns "images", "webkit", "sounds" in addition
+             // to files actually in assets/ directory. See: 
+             // http://stackoverflow.com/questions/6761008/assets-images-sounds-and-webkit
+             file = new File(new File(externalAssetsDir), assets[i]);
+             try {
+               InputStream is = am.open(assets[i]);
+               Log.v("SDL", "Asset found: " + assets[i]);
+               OutputStream os = new FileOutputStream(file);
+               byte[] data = new byte[is.available()];
+               is.read(data);
+               os.write(data);
+               is.close();
+               os.close();
+             } catch (FileNotFoundException e) {
+               // do nothing
+             } catch (IOException e) {
+               Log.w("SDL Warning", "Error writing " + file, e);
+	     }
+	   }
+	} catch (IOException e) {
+	    Log.w("SDL Warning", "Could not list assets");
+        }
     }
 
     // Setup
@@ -96,6 +142,9 @@ public class SDLActivity extends Activity {
         mLayout.addView(mSurface);
 
         setContentView(mLayout);
+
+	// sets externalAssetsDir
+        SDLActivity.unpackAssets();
     }
 
     // Events

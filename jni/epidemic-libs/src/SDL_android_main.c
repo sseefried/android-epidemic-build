@@ -17,7 +17,7 @@
 extern void SDL_Android_Init(JNIEnv* env, jclass cls);
 
 /* Start up the SDL app */
-void Java_org_libsdl_app_SDLActivity_nativeInit(JNIEnv* env, jclass cls, jobject obj)
+void Java_org_libsdl_app_SDLActivity_nativeInit(JNIEnv* env, jclass cls)
 {
     /* This interface could expand with ABI negotiation, calbacks, etc. */
     SDL_Android_Init(env, cls);
@@ -26,10 +26,15 @@ void Java_org_libsdl_app_SDLActivity_nativeInit(JNIEnv* env, jclass cls, jobject
 
     /* Run the application code! */
     int status;
-    char *argv[2];
+        jfieldID fid  =    (*env)->GetStaticFieldID(env, cls, "externalAssetsDir", 
+                                                    "Ljava/lang/String;");
+    jstring assetDir = (*env)->GetStaticObjectField(env, cls, fid);
+    char *path =       (*env)->GetStringUTFChars( env, assetDir , NULL ) ;
+    char *argv[3];
     argv[0] = SDL_strdup("SDL_app");
-    argv[1] = NULL;
-    status = SDL_main(1, argv);
+    argv[1] = SDL_strdup(path);
+    argv[2] = NULL;
+    status = SDL_main(2, argv);
 
     /* Do not issue an exit or the whole application will terminate instead of just the SDL thread */
     /* exit(status); */
