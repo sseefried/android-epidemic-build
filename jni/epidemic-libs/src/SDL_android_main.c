@@ -26,10 +26,10 @@ void Java_org_libsdl_app_SDLActivity_nativeInit(JNIEnv* env, jclass cls)
 
     /* Run the application code! */
     int status;
-        jfieldID fid  =    (*env)->GetStaticFieldID(env, cls, "externalAssetsDir", 
+    jfieldID fid  =    (*env)->GetStaticFieldID(env, cls, "externalAssetsDir", 
                                                     "Ljava/lang/String;");
     jstring assetDir = (*env)->GetStaticObjectField(env, cls, fid);
-    char *path =       (*env)->GetStringUTFChars( env, assetDir , NULL ) ;
+    const char *path = (*env)->GetStringUTFChars( env, assetDir , NULL ) ;
     char *argv[3];
     argv[0] = SDL_strdup("SDL_app");
     argv[1] = SDL_strdup(path);
