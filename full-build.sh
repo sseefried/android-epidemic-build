@@ -16,7 +16,6 @@ cp /home/androidbuilder/.ghc/android-14/arm-linux-androideabi-4.8/cabal/lib/arm-
 ndk-build clean && ndk-build -j9 && ant debug
 [ $? -eq 0 ] || exit 1
 
-
 scp $THIS_DIR/bin/$APK 'mac:~/tmp'
 ssh mac "adb root"
-ssh mac 'cd $HOME/tmp && adb push $APK /data/app'
+ssh mac "cd \$HOME/tmp && adb push $APK /data/app"
