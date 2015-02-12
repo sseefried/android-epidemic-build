@@ -67,7 +67,7 @@ LOCAL_LDLIBS := -L$(LOCAL_PATH)/$(TARGET_ARCH_ABI) \
  -lHSSDL2-0.1.0 \
  -lHSsdl2-mixer-0.1.0.0 \
  -lHStime-1.4.2 \
- -lHScairo-0.12.5.3 \
+ -lHScairo-0.13.0.5 \
  -lHSarray-0.5.0.0 \
  -lHSrandom-1.1 \
  -lHStime-1.4.2 \
@@ -88,8 +88,12 @@ LOCAL_LDLIBS := -L$(LOCAL_PATH)/$(TARGET_ARCH_ABI) \
  -lHSinteger-gmp-0.5.1.0 \
  -lHSghc-prim-0.3.1.0 \
  -lHSOpenGLRaw-1.5.0.0 \
+ -lHSdirectory-1.2.1.0 \
+ -lHSunix-2.7.0.1 \
+ -lHSfilepath-1.3.0.2 \
  -lGLESv2 \
  -liconv \
+ -lfreetype \
  -lcairo \
  -lpixman \
  -lpng \
