@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.declarative.games.epidemic"
+      package="com.declarative.games.epidemic.beta"
       android:versionCode="2"
       android:versionName="0.0.1"
       android:installLocation="auto">
