@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- sseefried: The versionCode is a concatenation of the 
+     SHA1 hash of the 'epidemic-game' repo and 
+     the SHA1 hash of commit in this repo just before you bump
+     the version code. (First six chars of SHA1 hash in each case)
+ -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.declarative.games.epidemic.beta"
-      android:versionCode="2"
+      android:versionCode="00a10d-ddf9e9"
       android:versionName="0.0.1"
       android:installLocation="auto">
 
