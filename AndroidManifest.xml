@@ -2,8 +2,8 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.declarative.games.epidemic.beta"
-      android:versionCode="5"
-      android:versionName="Build 5 (fa0f66-895ae4)"
+      android:versionCode="6"
+      android:versionName="Build 6 (4976e9-47f861)"
       android:installLocation="auto">
 
     <!-- Create a Java class extending Activity and place it in a
