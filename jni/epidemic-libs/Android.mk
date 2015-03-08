@@ -14,26 +14,12 @@ LOCAL_SRC_FILES := $(TARGET_ARCH_ABI)/libSDL2.so
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/include
 include $(PREBUILT_SHARED_LIBRARY)
 
-# SDL2_mixer
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := SDL2_mixer
-LOCAL_SRC_FILES := $(TARGET_ARCH_ABI)/libSDL2_mixer.so
-include $(PREBUILT_SHARED_LIBRARY)
-
 # GLESv2
 
 #include $(CLEAR_VARS)
 #LOCAL_MODULE := GLESv2
 #LOCAL_SRC_FILES := $(TARGET_ARCH_ABI)/libGLESv2.so
 #include $(PREBUILT_SHARED_LIBRARY)
-
-# libz
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := z
-LOCAL_SRC_FILES := $(TARGET_ARCH_ABI)/libz.so
-include $(PREBUILT_SHARED_LIBRARY)
 
 # The libmain that SDL enters
 
@@ -42,7 +28,7 @@ LOCAL_MODULE     := main
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/include
 LOCAL_SRC_FILES  := src/SDL_android_main.c main.c
 
-LOCAL_SHARED_LIBRARIES := SDL2 SDL2_mixer z
+LOCAL_SHARED_LIBRARIES := SDL2 
 
 #
 # sseefried: 
@@ -60,7 +46,7 @@ LOCAL_LDFLAGS += -Wl,--export-dynamic
 
 LOCAL_LDLIBS := -L$(LOCAL_PATH)/$(TARGET_ARCH_ABI) \
  -Wl,--start-group \
- -lz -llog \
+ -llog \
  -lHSEpidemic-0.0.1 \
  -lHSrts \
  -lCffi \
@@ -91,8 +77,11 @@ LOCAL_LDLIBS := -L$(LOCAL_PATH)/$(TARGET_ARCH_ABI) \
  -lHSdirectory-1.2.1.0 \
  -lHSunix-2.7.0.1 \
  -lHSfilepath-1.3.0.2 \
- -lGLESv2 \
+ -lSDL2_mixer \
  -liconv \
+ -lvorbisfile \
+ -lvorbis \
+ -logg \
  -lfreetype \
  -lcairo \
  -lpixman \

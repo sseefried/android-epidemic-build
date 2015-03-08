@@ -53,14 +53,9 @@ public class SDLActivity extends Activity {
     // Load the .so
     static {
         System.loadLibrary("SDL2");
-	System.loadLibrary("SDL2_mixer");
         System.loadLibrary("GLESv2");
-        // System.loadLibrary("SDL2_image");
-        //System.loadLibrary("SDL2_net");
-        //System.loadLibrary("SDL2_ttf");
         System.loadLibrary("main");
     }
-    
     
     public static void initialize() {
         // The static nature of the singleton and Android quirkyness force us to initialize everything here
