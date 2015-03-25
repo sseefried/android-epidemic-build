@@ -8,7 +8,7 @@ APK=com.declarative.games.epidemic.beta-release.apk
 THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cd $GAME_SRC
-$PREFIX/bin/arm-linux-androideabi-cabal install -fandroid
+$PREFIX/bin/arm-linux-androideabi-cabal install -fandroid $@
 [ $? -eq 0 ] || exit 1
 
 cd $THIS_DIR
