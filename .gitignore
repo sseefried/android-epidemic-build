@@ -8,3 +8,4 @@ gen/
 assets/*.wav
 assets/*.ttf
 assets/*.ogg
+secure.properties
